@@ -8,9 +8,7 @@ from rag import ask_rag
 app = FastAPI(title="BIS RAG API")
 
 
-# -----------------------------
-# CORS
-# -----------------------------
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -20,16 +18,12 @@ app.add_middleware(
 )
 
 
-# -----------------------------
-# Request model
-# -----------------------------
+
 class QuestionRequest(BaseModel):
     question: str
 
 
-# -----------------------------
-# Home
-# -----------------------------
+
 @app.get("/")
 def home():
     return {
@@ -37,9 +31,6 @@ def home():
     }
 
 
-# -----------------------------
-# Ask Question
-# -----------------------------
 @app.post("/ask")
 def ask_question(request: QuestionRequest):
 
